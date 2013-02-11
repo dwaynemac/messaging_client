@@ -1,0 +1,53 @@
+= Messaging Client
+
+== Usage
+
+Messaging::Client.post_message('enrollment',{id: 1})
+
+Messaging::Client.subscribe_to('enrollment')
+
+Messaging::Client.unsubscribe_from('enrollment')
+
+== Installation
+
+=== For a Rails app
+
+In Gemfile
+
+    gem 'messaging_client'
+
+And you should define:
+
+    Messaging::HYDRA
+    Messaging::API_KEY
+
+
+
+=== For a non-Rails app
+
+In Gemfile
+
+    gem 'messaging_client'
+
+# TODO ...
+
+== TESTING
+
+For running gems specs run
+
+    rake
+
+== Updating gem
+
+=== Build gem locally:
+
+    gem build messaging_client.gemspec
+
+=== Push to rubygems
+
+    gem push messaging_client-X.Y.Z.gem
+
+== TODO
+
+  * specs!
+  * non-Rails app usage example

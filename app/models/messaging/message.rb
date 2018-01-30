@@ -9,7 +9,7 @@ module Messaging
         ]
     self.use_api_key = true
     self.api_key_name = "app_key"
-    self.api_key = Messaging::API_KEY
+    self.api_key = KEY
     self.host  = HOST
 
     def json_root

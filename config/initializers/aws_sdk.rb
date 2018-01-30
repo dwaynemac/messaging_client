@@ -1,6 +1,6 @@
 Aws.config.update({
    credentials: Aws::Credentials.new(
-       SNS_KEY_ID,
-       SNS_SECRET_ACCESS_KEY
+       Messaging::SNS_KEY_ID,
+       Messaging::SNS_SECRET_ACCESS_KEY
     )
 })

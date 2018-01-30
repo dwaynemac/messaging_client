@@ -1,3 +1,5 @@
+require 'aws-sdk-sns'
+
 module Messaging
   class Client
 

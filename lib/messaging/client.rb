@@ -30,7 +30,7 @@ module Messaging
         access_key_id: SNS_KEY_ID,
         secret_access_key: SNS_SECRET_ACCESS_KEY
       )
-      topic_arn = sns.topics.select{|t| t.arn.match(/([^:]*)$/)[0] == key.to_s }.first
+      topic_arn = sns.topics.select{|t| t.arn.match(/([^:]*)$/)[0] == key.to_s }.first.try(:arn)
       topic = sns.topic(topic_arn)
       topic.publish({ message: data.to_json })
     end

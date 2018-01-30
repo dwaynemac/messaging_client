@@ -18,7 +18,11 @@ module Messaging
     # @param key [String]
     # @param data [Hash]
     def self.post_message(key,data={})
-      publish_to_sns(key,data)
+      begin
+        publish_to_sns(key,data)
+      rescue
+        # on transition ignore errors. 
+      end
       
       m = Message.new(key_name: key, data: data.to_json)
       m.create

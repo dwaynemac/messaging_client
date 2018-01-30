@@ -25,7 +25,11 @@ module Messaging
     end
     
     def self.publish_to_sns(key,data)
-      sns = Aws::SNS::Resource.new(region: 'us-east-1')
+      sns = Aws::SNS::Resource.new(
+        region: 'us-east-1',
+        access_key_id: SNS_KEY_ID,
+        secret_access_key: SNS_SECRET_ACCESS_KEY
+      )
       topic_arn = sns.topics.select{|t| t.arn.match(/([^:]*)$/)[0] == key.to_s }.first
       topic = sns.topic(topic_arn)
       topic.publish({ message: data.to_json })

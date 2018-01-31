@@ -36,7 +36,18 @@ module Messaging
       )
       topic_arn = sns.topics.select{|t| t.arn.match(/([^:]*)$/)[0] == key.to_s }.first.try(:arn)
       topic = sns.topic(topic_arn)
-      topic.publish({ message: data.to_json })
+      
+      msg = { message: data.to_json }
+      if data['account_name']
+        msg[:message_attributes] = {
+          account_name: {
+            data_type: 'String',
+            string_value: data['account_name']
+          }
+        }
+      end
+      
+      topic.publish(msg)
     end
 
   end

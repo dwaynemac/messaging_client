@@ -3,29 +3,10 @@ require 'aws-sdk-sns'
 module Messaging
   class Client
 
-    # @param key_name [String]
-    # @param url [String]
-    # @param secret_key [String]
-    def self.subscribe_to(key_name,url,secret_key="")
-
-    end
-
-    # @param key_name [String]
-    def self.unsubscribe_from(key_name)
-
-    end
-
     # @param key [String]
     # @param data [Hash]
     def self.post_message(key,data={})
-      begin
-        publish_to_sns(key,data)
-      rescue
-        # on transition ignore errors. 
-      end
-      
-      m = Message.new(key_name: key, data: data.to_json)
-      m.create
+      publish_to_sns(key,data)
     end
     
     def self.publish_to_sns(key,data)

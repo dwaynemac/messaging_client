@@ -22,7 +22,11 @@ module SnsHelper
   end
   
   def sns_data
-    @sns_data ||= ActiveSupport::JSON.decode(request.body).symbolize_keys!
+    @sns_data ||= ActiveSupport::JSON.decode(raw_data).symbolize_keys!
+  end
+
+  def raw_data
+    request.body.respond_to?(:string) ? request.body.string : request.body
   end
   
   def sns_message_id

@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.version       = '0.2.1'
 
   gem.add_dependency "railties", ">= 3.1"
-  gem.add_dependency 'logical_model', '>= 0.5.0'
+  gem.add_dependency 'logical_model', '0.7.1'
   gem.add_dependency 'aws-sdk-sns', '~> 1'
 
 end

@@ -26,7 +26,13 @@ module SnsHelper
   end
 
   def raw_data
-    request.body.respond_to?(:string) ? request.body.string : request.body
+    if request.body.respond_to?(:string)
+      request.body.string
+    elsif request.body.respond_to?(:read)
+      request.body.read
+    else
+      request.body
+    end
   end
   
   def sns_message_id
